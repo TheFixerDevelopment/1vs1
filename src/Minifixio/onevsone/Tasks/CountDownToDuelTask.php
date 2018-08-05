@@ -16,7 +16,7 @@ class CountDownToDuelTask extends Task{
 	private $countdownValue;
 	
 	public function __construct(Plugin $owner, Arena $arena){
-		parent::__construct($owner);
+		$this->owner = $owner;
 		$this->arena = $arena;
 		$this->countdownValue = CountDownToDuelTask::COUNTDOWN_DURATION;
 	}

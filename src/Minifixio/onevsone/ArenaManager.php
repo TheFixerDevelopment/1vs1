@@ -61,7 +61,7 @@ class ArenaManager{
 		// Launch sign refreshing task
 		$task = new SignRefreshTask(OneVsOne::getInstance());
 		$task->arenaManager = $this;
-		$this->signRefreshTaskHandler = $this->getScheduler()->scheduleRepeatingTask($task, self::SIGN_REFRESH_DELAY * 20);
+		$this->signRefreshTaskHandler = OneVsOne::getInstance()->getScheduler()->scheduleRepeatingTask($task, self::SIGN_REFRESH_DELAY * 20);
 	}
 	
 	/**
@@ -70,7 +70,7 @@ class ArenaManager{
 	public function parseArenaPositions(array $arenaPositions) {
 		foreach ($arenaPositions as $n => $arenaPosition) {
 			Server::getInstance()->loadLevel(Server::getInstance()->getLevelByName($arenaPosition[5]));
-			if(($level = $this->getServer()->getLevelByName($arenaPosition[5])) === null){
+			if(($level = Server::getInstance()->getLevelByName($arenaPosition[5])) === null){
 				$this->getServer()->getLogger()->error("[1vs1] - " . $arenaPosition[5] . " is not loaded. Arena " . $n . " is disabled."); 
 			}
 			else{
@@ -95,7 +95,7 @@ class ArenaManager{
 		PluginUtils::logOnConsole(TextFormat::GREEN . "Load signs... " . TextFormat::RED . count($signPositions) . " signs");
 		foreach ($signPositions as $n => $signPosition) {
 			Server::getInstance()->loadLevel($signPosition[3]);
-			if(($level = $this->getServer()->getLevelByName($signPosition[3])) !== null){ 
+			if(($level = Server::getInstance()->getLevelByName($signPosition[3])) !== null){ 
 				$newSignPosition = new Position($signPosition[0], $signPosition[1], $signPosition[2], $level);
 				$tile = $level->getTile($newSignPosition);
 				if($tile != null){
@@ -172,7 +172,7 @@ class ArenaManager{
 		}
 		
 		if($freeArena == NULL){
-			Server::getInstance()->getLogger()->debug(OneVsOne::getMessage("pluginprefix") . OneVsOne::getMessage("no_freearena"));
+			Server::getInstance()->getLogger()->debug(OneVsOne::getMessage("pluginprefix ") . OneVsOne::getMessage("no_freearena"));
 			return true;
 		
 		//Randomize

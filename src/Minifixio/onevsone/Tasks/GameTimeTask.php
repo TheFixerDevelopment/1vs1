@@ -6,7 +6,7 @@ use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
 
-class GameTimeTask extends Task{
+class GameTimeTask extends PluginTask{
 	
 	private $roundDuration = 180;
 	
@@ -14,7 +14,7 @@ class GameTimeTask extends Task{
 	private $countdownValue;
 	
 	public function __construct(Plugin $owner, Arena $arena){
-		parent::__construct($owner);
+		$this->owner = $owner;
 		$this->arena = $arena;
 		$this->countdownValue = $owner->getConfig()->get("time-limit") * 60;
 	}
