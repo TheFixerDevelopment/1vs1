@@ -28,7 +28,7 @@ class OneVsOne extends PluginBase{
 	/**
 	* Plugin is enabled by PocketMine server
 	*/
-    public function onEnable(): void{
+    public function onEnable() : void{
     	self::$instance = $this;
     	PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED ." 1vs1 " . TextFormat::GREEN. "plugin");
     	
@@ -64,20 +64,20 @@ class OneVsOne extends PluginBase{
       $finalPrefix = str_replace("&", "§", $prefix);
       return $finalPrefix . " ";
     }
-    public static function getInstance(): self{
+    public static function getInstance() : self{
     	return self::$instance;
     }
     public static function getMessage(string $message = ""){
-    	$msg = $this->messages->get($message);
+    	$msg = self::$instance->messages->get($message);
       if($msg != null) {
       $finalMessage = str_replace("&", "§", TextFormat::ESCAPE, $msg);
       return $finalMessage;
       } else {
-        return $this->getPrefix() . "Message not found.";
+        return self::$instance->getPrefix() . "Message not found.";
       }
     }
     
-    public function onDisable(): void {
+    public function onDisable() : void {
  
     }
 
