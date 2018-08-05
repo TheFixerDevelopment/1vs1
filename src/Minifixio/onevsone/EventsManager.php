@@ -2,7 +2,7 @@
 
 namespace Minifixio\onevsone;
 
-use Minifixio\onevsone\utils\PluginUtils;
+// Pocketmine imports
 use pocketmine\tile\{Sign, Tile};
 use pocketmine\item\Item;
 use pocketmine\block\Block;
@@ -11,6 +11,10 @@ use pocketmine\event\entity\{EntityDamageByEntityEvent, EntityDeathEvent};
 use pocketmine\event\player\{PlayerJoinEvent, PlayerInteractEvent, PlayerQuitEvent, PlayerDeathEvent};
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\utils\TextFormat;
+
+//Plugin imports
+use Minifixio\onevsone\utils\PluginUtils;
+
 
 
 /**

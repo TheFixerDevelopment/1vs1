@@ -2,13 +2,16 @@
 
 namespace Minifixio\onevsone;
 
-use Minifixio\onevsone\Tasks\SignRefreskTask;
-use Minifixio\onevsone\utils\PluginUtils;
-use Minifixio\onevsone\{Arena, OneVsOne};
+//Pocketmine imports
 use pocketmine\{Player, Server};
 use pocketmine\level\{Position, Location};
 use pocketmine\utils\{TextFormat, Config};
 use pocketmine\tile\Sign;
+
+## Plugin imports
+use Minifixio\onevsone\Tasks\SignRefreskTask;
+use Minifixio\onevsone\utils\PluginUtils;
+use Minifixio\onevsone\{Arena, OneVsOne};
 
 /**
  * Manages PVP arenas
@@ -39,7 +42,7 @@ class ArenaManager{
 		$this->config = $config;
 		
 		if(!$this->config->arenas){
-			$this->config->set('arenas', []);
+			$this->config->set("arenas", []);
 			$arenaPositions = [];
 		}
 		else{
@@ -47,7 +50,7 @@ class ArenaManager{
 		}
 		
 		if(!$this->config->signs){
-			$this->config->set('signs', []);
+			$this->config->set("signs", []);
 			$signPositions = [];
 		}
 		else{
@@ -71,7 +74,7 @@ class ArenaManager{
 		foreach ($arenaPositions as $n => $arenaPosition) {
 			Server::getInstance()->loadLevel(Server::getInstance()->getLevelByName($arenaPosition[5]));
 			if(($level = Server::getInstance()->getLevelByName($arenaPosition[5])) === null){
-				$this->getServer()->getLogger()->error("[1vs1] - " . $arenaPosition[5] . " is not loaded. Arena " . $n . " is disabled."); 
+				Server::getInstance()->getLogger()->error("[1vs1] - " . $arenaPosition[5] . " is not loaded. Arena " . $n . " is disabled."); 
 			}
 			else{
 				/* Added support for custom spawnpoints.
@@ -200,7 +203,7 @@ class ArenaManager{
 	 * @param Player $player
 	 * @return Arena or NULL
 	 */
-	public function getPlayerArena(Player $player){
+	public function getPlayerArena(Player $player) : Arena{
 		foreach ($this->arenas as $arena) {
 			if($arena->isPlayerInArena($player)){
 				return $arena;

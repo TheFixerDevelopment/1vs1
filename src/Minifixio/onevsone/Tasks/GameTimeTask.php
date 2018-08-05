@@ -2,11 +2,13 @@
 
 namespace Minifixio\onevsone\Tasks;
 
+// Pocketmine imports
+
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
 
-class GameTimeTask extends PluginTask{
+class GameTimeTask extends Task{
 	
 	private $roundDuration = 180;
 	
@@ -19,7 +21,7 @@ class GameTimeTask extends PluginTask{
 		$this->countdownValue = $owner->getConfig()->get("time-limit") * 60;
 	}
 	
-	public function onRun(int $currentTick): void{
+	public function onRun(int $currentTick) : void{
 		if(count($this->arena->players) < 2){
 			$this->arena->abortDuel();
 		}

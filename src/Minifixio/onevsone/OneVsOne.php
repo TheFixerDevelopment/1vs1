@@ -2,12 +2,15 @@
 
 namespace Minifixio\onevsone;
 
+//Pocketmine imports
+use pocketmine\utils\{TextFormat, Config};
+use pocketmine\Server;
 use pocketmine\plugin\PluginBase;
+
+//Plugin imports
 use Minifixio\onevsone\{EventsManager, ArenaManager};
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\Commands\{ArenaCommand, JoinCommand};
-use pocketmine\utils\{TextFormat, Config};
-use pocketmine\Server;
 
 
 class OneVsOne extends PluginBase{
@@ -64,7 +67,7 @@ class OneVsOne extends PluginBase{
       $finalPrefix = str_replace("&", "§", $prefix);
       return $finalPrefix . " ";
     }
-    public static function getInstance() : self{
+    public static function getInstance(): self{
     	return self::$instance;
     }
     public static function getMessage(string $message = ""){

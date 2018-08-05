@@ -2,9 +2,12 @@
 
 namespace Minifixio\onevsone\Tasks;
 
+// Pocketmine imports
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
+
+// Plugin imports
 use Minifixio\onevsone\OneVsOne;
 
 

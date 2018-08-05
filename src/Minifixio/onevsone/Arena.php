@@ -2,8 +2,7 @@
 
 namespace Minifixio\onevsone;
 
-use Minifixio\onevsone\{ArenaManager, OneVsOne};
-use Minifixio\onevsone\utils\PluginUtils;
+//Pocketmine imports
 use pocketmine\{Server, Player};
 use pocketmine\level\Position;
 use pocketmine\item\Item;
@@ -12,6 +11,12 @@ use pocketmine\entity\{InstantEffect, Effect};
 use pocketmine\math\Vector3;
 use pocketmine\level\particle\{DestroyBlockParticle, SmokeParticle};
 use pocketmine\block\Block;
+
+//Plugin imports
+use Minifixio\onevsone\{ArenaManager, OneVsOne};
+use Minifixio\onevsone\utils\PluginUtils;
+
+//Date imports.
 use \DateTime;
 
 class Arena{
@@ -138,10 +143,10 @@ class Arena{
 		$player->getInventory()->setItemInHand(Item::get(ITEM::IRON_SWORD), $player);
 		
 		// Pur the armor on the player
-		$player->getArmorInventory()->setHelmet(Item::get(302, 0, 1));
-		$player->getArmorInventory()->setChestplate(Item::get(303, 0, 1));
-		$player->getArmorInventory()->setLeggings(Item::get(304, 0, 1));
-		$player->getArmorInventory()->setBoots(Item::get(305, 0, 1));
+		$player->getArmorInventory()->setHelmet(Item::get(302, 0, 1)); //Should be configurable soon.
+		$player->getArmorInventory()->setChestplate(Item::get(303, 0, 1)); //Should be configurable soon.
+		$player->getArmorInventory()->setLeggings(Item::get(304, 0, 1)); //Should be configurable soon.
+		$player->getArmorInventory()->setBoots(Item::get(305, 0, 1)); //Should be configurable soon.
 		$player->getArmorInventory()->sendContents($player);
 		
 		// Set his life to 20

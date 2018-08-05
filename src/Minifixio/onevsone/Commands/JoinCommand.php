@@ -2,10 +2,13 @@
 
 namespace Minifixio\onevsone\Commands;
 
+//Pocketmine imports
 use pocketmine\command\{CommandSender, Command};
 use pocketmine\level\Level;
 use pocketmine\{Server, Player};
 use pocketmine\utils\TextFormat;
+
+//Plugin imports
 use Minifixio\onevsone\{ArenaManager, OneVsOne};
 
 class JoinCommand extends Command {

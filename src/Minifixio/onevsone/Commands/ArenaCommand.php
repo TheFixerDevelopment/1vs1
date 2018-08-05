@@ -2,10 +2,13 @@
 
 namespace Minifixio\onevsone\Commands;
 
+//Pocketmine imports
 use pocketmine\command\{CommandSender, Command};
 use pocketmine\level\Location;
 use pocketmine\{Server, Player};
 use pocketmine\utils\TextFormat;
+
+//Plugin imports
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\{ArenaManager, OneVsOne};
 
