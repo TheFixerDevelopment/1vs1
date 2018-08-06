@@ -62,7 +62,7 @@ class OneVsOne extends PluginBase{
     	$arenaCommand = new ArenaCommand($this, $this->arenaManager);
     	$this->getServer()->getCommandMap()->register($arenaCommand->commandName, $arenaCommand);    	
     }
-    public function getPrefix() {
+    public function getPrefix() : string {
       $prefix = $this->messages->get("pluginprefix");
       $finalPrefix = str_replace("&", "§", $prefix);
       return $finalPrefix . " ";
@@ -71,12 +71,12 @@ class OneVsOne extends PluginBase{
     	return self::$instance;
     }
     public static function getMessage(string $message = ""){
-    	$msg = self::$instance->messages->get($message);
-      if($msg != null) {
-      $finalMessage = str_replace("&", "§", TextFormat::ESCAPE, $msg);
+     $this->messages = $this->getMessage($message);
+     if($this->getMessage($message) != null) {
+      $finalMessage = str_replace("&", "§", $message);
       return $finalMessage;
       } else {
-        return self::$instance->getPrefix() . "Message not found.";
+        return $this->getPrefix() . "Message not found.";
       }
     }
     
