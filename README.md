@@ -12,7 +12,7 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 ### How to use:
 -> First, you'll need to create your(s) arena(s) doing /arena where your arena is. The players will spawn where you set /area 1 (pos1) and /area 2 (pos2) (see example below). You can make an unlimited numbers of arenas. All the arenas’s positions are saved in data.yml file.
 
--> Then, the players can start a duel doing /match, a countdown before the fight will start (only 2 players per arena) and they will be teleported in an arena and they will get a sword, armor and food and all their effects will be removed for fight. The fight lasts 3 minutes by default. (You can configure how long the fight will last in configurations) and at the end of the timer if there is no winners, the duel ends and the players are teleported back to the spawn.
+-> Then, the players can start a duel doing /match, a countdown before the fight will start (only 2 players per arena) and they will be teleported in an arena and they will get a sword, armor and food. Also, all their effects will be removed for fight. The fight lasts 3 minutes by default. (You can configure how long the fight will last in configurations) and at the end of the timer if there is no winners, the duel ends and the players are teleported back to the spawn.
 
 -> You can place a sign and write on the 1st line : « [1vs1] » to have a 1vs1 stats sign with the numbers of active arenas and the number of the players in the queue. The signs refreshes every 5 seconds.
 
