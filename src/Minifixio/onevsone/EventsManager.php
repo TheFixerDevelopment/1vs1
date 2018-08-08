@@ -10,7 +10,6 @@ use pocketmine\event\Listener;
 use pocketmine\event\entity\{EntityDamageByEntityEvent, EntityDeathEvent};
 use pocketmine\event\player\{PlayerJoinEvent, PlayerInteractEvent, PlayerQuitEvent, PlayerDeathEvent};
 use pocketmine\event\block\SignChangeEvent;
-use pocketmine\utils\TextFormat;
 
 //Plugin imports
 use Minifixio\onevsone\utils\PluginUtils;

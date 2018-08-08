@@ -32,7 +32,7 @@ class ArenaCommand extends Command {
 		$this->arenaManager = $arenaManager;
 	}
 
-	public function execute(CommandSender $sender, string $label, array $params){
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
       //Is this necessary?
 		if(!$this->plugin->isEnabled()){
 			return false;

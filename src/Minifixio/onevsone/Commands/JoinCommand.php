@@ -24,7 +24,7 @@ class JoinCommand extends Command {
 		$this->plugin = $plugin;
 		$this->arenaManager = $arenaManager;
 	}
-	public function execute(CommandSender $sender, string $label, array $params){
+	public function execute(CommandSender $sender, string $label, array $params) : bool{
 		if(!$this->plugin->isEnabled()){
 			return false;
 		}

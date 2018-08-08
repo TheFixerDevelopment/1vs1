@@ -3,7 +3,7 @@
 namespace Minifixio\onevsone\utils;
 
 // Pocketmine imports
-use pocketmine\{Player, Server};
+use pocketmine\Server;
 use pocketmine\utils\TextFormat;
 
 // Plugin imports
