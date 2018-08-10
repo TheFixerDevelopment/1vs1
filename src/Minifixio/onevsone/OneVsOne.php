@@ -35,16 +35,16 @@ class OneVsOne extends PluginBase{
     	self::$instance = $this;
     	PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED ." 1vs1 " . TextFormat::GREEN. "plugin");
     	
-    	$this->saveDefaultConfig();
-        if(!is_dir($this->getDataFolder())) {
-        mkdir($this->getDataFolder());
-        }
+        @mkdir($this->getDataFolder());
+        
     	$this->arenaConfig = new Config($this->getDataFolder()."data.yml", Config::YAML, array());    	
 
     	// Load custom messages
     	$this->saveResource("messages.yml");
     	$this->messages = new Config($this->getDataFolder() ."messages.yml");
-
+        
+	$this->saveDefaultConfig();
+	    
     	$this->arenaManager = new ArenaManager();
     	$this->arenaManager->init($this->arenaConfig);
     	
