@@ -1,9 +1,9 @@
 name: 1vs1
 main: Minifixio\onevsone\OneVsOne
-version: 0.2.3
+version: 1.0.0
 api: [3.0.0, 4.0.0]
 description: 1vs1 Plugin
-author: Minifixio edited by Zeao.
+author: Minifixio, broken by Zeao, fixed by NickTehUnicorn.
 permissions:
   onevsone.arena:
     description: "Allows using /arena"
