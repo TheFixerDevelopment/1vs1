@@ -1,24 +1,27 @@
 <?php
-
+declare(strict_types=1);
 namespace Minifixio\onevsone\Tasks;
 
-// Pocketmine imports
 
+use Minifixio\onevsone\Arena;
+use pocketmine\Player;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
 use pocketmine\plugin\Plugin;
 
 class GameTimeTask extends Task{
 	
-	private $roundDuration = 180;
-	
+	private $roundDuration;
+
+	/** @var Plugin  */
+	private $owner;
+	/** @var Arena  */
 	private $arena;
-	private $countdownValue;
 	
 	public function __construct(Plugin $owner, Arena $arena){
 		$this->owner = $owner;
 		$this->arena = $arena;
-		$this->countdownValue = $owner->getConfig()->get("time-limit") * 60;
+		$this->roundDuration= $owner->getConfig()->get("time-limit") * 60;
 	}
 	
 	public function onRun(int $currentTick) : void{
@@ -26,19 +29,20 @@ class GameTimeTask extends Task{
 			$this->arena->abortDuel();
 		}
 		else{
-			$player1 = $this->arena->players[0];
+		    /** @var Player $player1 */
+            $player1 = $this->arena->players[0];
+            /** @var Player $player2 */
 			$player2 = $this->arena->players[1];
-			
 			if(!$player1->isOnline() || !$player2->isOnline()){
 				$this->arena->abortDuel();
 			}
 			else{
-				$player1->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->countdownValue . TextFormat::RESET . " seconds"); //Make this configurable in the future.
-				$player2->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->countdownValue . TextFormat::RESET . " seconds"); //Make this configurable in the future.
-				$this->countdownValue--;
+				$player1->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->roundDuration . TextFormat::RESET . " seconds"); //Make this configurable in the future.
+				$player2->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->roundDuration . TextFormat::RESET . " seconds"); //Make this configurable in the future.
+				$this->roundDuration--;
 				
-				// If countdown is finished, start the duel and stop the task
-				if($this->countdownValue == 0){
+				// If duration is exceeded, end match.
+				if($this->roundDuration == 0){
 					$this->arena->onRoundEnd();
 				}
 			}
