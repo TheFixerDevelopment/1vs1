@@ -16,21 +16,21 @@ op_only: "&2You must be OP to use this command."
 queue_join: "You've joined the &41vs1 &fqueue"
 queue_playersinqueue: "Waiting players :&2 "
 queue_popup: "&4» You've joined the 1vs1 queue"
-queue_alreadyinqueue: "&4You are already in the queue !"
+queue_alreadyinqueue: "&4You are already in the queue!"
 no_freearena: "There is currently no free arenas available, or they are all in use."
 
 ##############
 #Duel messages
 ##############
-duel_tip: "&6» You are strarting a duel !"
-duel_against: "&6&l>> Duel against :&4 "
-duel_start: "&f&l++++++++=++++++++\n&6> You are starting a duel !\n&6> You have &23min !\n&6> Good luck :) !\n&f&l++++++++=++++++++"
-duel_winner: "&6&l> You won the duel against :&4 "
-duel_loser: "&6&l> You've lost the duel against :&4 "
+duel_tip: "&6» You are strarting a duel!"
+duel_against: "&6&l>> Duel against &4 "
+duel_start: "&f&l++++++++=++++++++\n&6> You are starting a duel!\n&6> You have &23 minutes!\n&6> Good luck :)\n&f&l++++++++=++++++++"
+duel_winner: "&6&l> You won the duel against &4 "
+duel_loser: "&6&l> You've lost the duel against &4 "
 duel_broadcast: "&6&l won a duel against "
-duel_timeover: "&f&l++++++++=++++++++\n&6> Playing time &6over&6, no winners !\n&6> Be faster next time !\n&f&l++++++++=++++++++"
+duel_timeover: "&f&l++++++++=++++++++\n&6> Playing time &6over&6, no winners!\n&6> Be faster next time!\n&f&l++++++++=++++++++"
 countdown_timer: "&a&lDuel will be starting in &r&b{CD} &cseconds..."
-#Use {CD} for countdown timer. {CD} is how many seconds before the game / 1v1 starts.
+#Use {CD} for countdown timer. {CD} is how many seconds before the game starts.
 
 start_duel: "&aStarting duel - &b{rp0}"
 ## Start the duel. This option allows you to change the starting message. Use {rp0} as the sender in their respective. {rp0} will and should automatically replace with the sender name, or the player in that respective.
@@ -41,8 +41,8 @@ start_duel_against: "&aVS &b{rp1}"
 ###############
 #Arena messages
 ###############
-arena_pos1: "&aSpawn position 1 set succesfully."
-arena_pos2: "&aSpawn position 2 set succesfully."
+arena_pos1: "&aSpawn position 1 set successfully."
+arena_pos2: "&aSpawn position 2 set successfully."
 arena_created: "&dYou have created a new arena at your location! There are now &5{arenacount} &darenas!"
-arena_alreadyinarena: "&4You are already in a arena !"
+arena_alreadyinarena: "&4You are already in an arena!"
 ...

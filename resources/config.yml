@@ -1,13 +1,13 @@
-# 1vs1 Config
-#  Plugin by Minifixio
-
 ---
+# 1vs1 Config
+# Plugin by Minifixio
+
 ###############
 #1vs1 settings
 ###############
 # Time limit for each duel, in minutes:
 time-limit: 3
-# 
+
 # TODO: Add Custom kits
 
 # If you want to force the kits:
