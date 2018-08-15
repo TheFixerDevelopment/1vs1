@@ -1,4 +1,4 @@
-### 1vs1 plugin by Minifixio, broken by Zeao.
+### 1vs1 plugin by Minifixio, edited by Zeao, fixed by NickTehUnicorn.
 
 ### Description:
 Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for you!
