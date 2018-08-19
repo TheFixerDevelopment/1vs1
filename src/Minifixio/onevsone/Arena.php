@@ -49,6 +49,9 @@ class Arena{
     /** @var TaskHandler */
     private $countdownTaskHandler;
 
+    /** @var array */
+    private $inventories = [];
+
     /**
      * Build a new Arena
      *
@@ -71,6 +74,7 @@ class Arena{
      * @param Player[] $players
      */
     public function startRound(array $players){
+        foreach($players as $p) $this->inventories[$p->getName()] = $p->getInventory()->getContents();
 
         // Set active to prevent new players
         $this->active = true;
@@ -96,7 +100,6 @@ class Arena{
      * Really starts the duel after countdown
      */
     public function startDuel(){
-
         $this->plugin->getScheduler()->cancelTask($this->countdownTaskHandler->getTaskId());
 
         /** @var Player $player1 */
@@ -154,7 +157,6 @@ class Arena{
         // Set his life to 20
         $player->setHealth(20);
         $player->removeAllEffects();
-
     }
 
     /**
@@ -162,7 +164,6 @@ class Arena{
      * @param Player $loser
      */
     public function onPlayerDeath(Player $loser){
-
         // Finish the duel and teleport the winner at spawn
         $loser == $this->players[0] ? $winner = $this->players[1] : $winner = $this->players[0];
 
@@ -184,9 +185,7 @@ class Arena{
     }
 
     /**
-     * Reset the Arena to current state
-     *
-     * Does that sentence even make sense..?
+     * Reset the Arena
      */
     private function reset(){
         // Put active arena after the duel
@@ -202,6 +201,10 @@ class Arena{
                 $this->plugin->getScheduler()->cancelTask($this->gameTimeTaskHandler->getTaskId());
                 $this->manager->notifyEndOfRound($this);
             }
+        }
+
+        foreach($this->inventories as $owner => $inv){
+            foreach($inv as $item) OneVsOne::getInstance()->getServer()->getPlayer($owner)->getInventory()->addItem($item);
         }
     }
 
