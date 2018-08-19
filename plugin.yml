@@ -3,7 +3,7 @@ main: Minifixio\onevsone\OneVsOne
 version: 1.0.0
 api: [3.0.0, 4.0.0]
 description: 1vs1 Plugin
-author: Minifixio, edied by Zeao, fixed by NickTehUnicorn.
+author: Minifixio, edited by Zeao, fixed by NickTehUnicorn.
 permissions:
   onevsone.arena:
     description: "Allows using /arena"
