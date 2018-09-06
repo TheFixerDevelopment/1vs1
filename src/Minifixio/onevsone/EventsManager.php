@@ -10,6 +10,8 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\{PlayerInteractEvent, PlayerQuitEvent, PlayerDeathEvent};
 use pocketmine\event\block\SignChangeEvent;
 
+//Plugin imports
+onevsone\OneVsOne;
 
 class EventsManager implements Listener{
 
@@ -34,9 +36,8 @@ class EventsManager implements Listener{
             $arena->onPlayerDeath($deadPlayer);
         }
     }
-}
-    /*public function tileupdate(SignChangeEvent $event){
-        if($event->getBlock()->getID() == Item::SIGN_POST || $event->getBlock()->getID() == Block::SIGN_POST || $event->getBlock()->getID() == Block::WALL_SIGN){
+    public function tileupdate(SignChangeEvent $event){
+        if($event->getBlock()->getId() == Item::SIGN_POST){
             $signTile = $event->getPlayer()->getLevel()->getTile($event->getBlock());
             if(!$signTile instanceof Sign){
                 return false;
@@ -56,9 +57,10 @@ class EventsManager implements Listener{
     }
 
     public function onInteract(PlayerInteractEvent $e){
-        if($e->getAction() == PlayerInteractEvent::RIGHT_CLICK_BLOCK){
+        $block = $event->getBlock();
+        if ($block instanceof SignPost) {
             $id = ($b = $e->getBlock())->getId();
-            if(in_array($id, [Block::SIGN_POST, Block::WALL_SIGN])){
+            if(in_array($id, [Block::SIGN_POST])){
                 foreach($this->arenaManager->config->get("signs") as $sign => $pos){
                     if($pos = [$b->x, $b->y, $b->z, $b->level]){
                         $this->arenaManager->addNewPlayerToQueue($e->getPlayer());
@@ -66,6 +68,5 @@ class EventsManager implements Listener{
                 }
             }
         }
-    }
     }
     }
