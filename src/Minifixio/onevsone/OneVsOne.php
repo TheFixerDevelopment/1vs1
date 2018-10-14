@@ -30,7 +30,7 @@ class OneVsOne extends PluginBase{
     /**
      * Plugin is enabled by PocketMine server
      */
-    public function onEnable(): void{
+    protected function onEnable(): void{
         self::$instance = $this;
         PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED . " 1vs1 " . TextFormat::GREEN . "plugin");
 
