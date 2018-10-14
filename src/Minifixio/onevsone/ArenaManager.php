@@ -273,11 +273,11 @@ class ArenaManager{
         return true;
     }
 
-    public function getNumberOfArenas(){
+    public function getNumberOfArenas() : int{
         return count($this->arenas);
     }
 
-    public function getNumberOfFreeArenas(){
+    public function getNumberOfFreeArenas() : int{
         $numberOfFreeArenas = count($this->arenas);
         foreach($this->arenas as $arena){
             if($arena->active){
@@ -287,7 +287,7 @@ class ArenaManager{
         return $numberOfFreeArenas;
     }
 
-    public function getNumberOfPlayersInQueue(){
+    public function getNumberOfPlayersInQueue() : int{
         return count($this->queue);
     }
 
