@@ -14,6 +14,7 @@ use pocketmine\tile\Sign;
 ## Plugin imports
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\Tasks\SignRefreshTask;
+use Minifixo\onevsone\Arena;
 
 /**
  * Manages PVP arenas
@@ -36,6 +37,7 @@ class ArenaManager{
     private $signTiles = array();
 
     public const SIGN_REFRESH_DELAY = 5;
+    
     private $signRefreshTaskHandler;
 
     /**
