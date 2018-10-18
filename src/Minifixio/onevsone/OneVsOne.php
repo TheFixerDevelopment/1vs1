@@ -9,6 +9,8 @@ use pocketmine\plugin\PluginBase;
 //Plugin imports
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\Commands\{ArenaCommand, JoinCommand};
+use Minifixo\onevsone\ArenaManager;
+use Minifixo\onevsone\EventsManager;
 
 
 class OneVsOne extends PluginBase{
@@ -30,7 +32,7 @@ class OneVsOne extends PluginBase{
     /**
      * Plugin is enabled by PocketMine server
      */
-    protected function onEnable(): void{
+    protected function onEnable() : void{
         self::$instance = $this;
         PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED . " 1vs1 " . TextFormat::GREEN . "plugin");
 
