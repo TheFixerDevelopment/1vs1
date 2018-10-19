@@ -11,7 +11,7 @@ use pocketmine\event\player\{PlayerInteractEvent, PlayerQuitEvent, PlayerDeathEv
 use pocketmine\event\block\SignChangeEvent;
 
 //Plugin imports
-onevsone\OneVsOne;
+use Minifixio\onevsone\OneVsOne;
 
 class EventsManager implements Listener{
 
