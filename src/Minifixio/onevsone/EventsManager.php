@@ -57,10 +57,10 @@ class EventsManager implements Listener{
     }
 
     public function onInteract(PlayerInteractEvent $e){
-        $block = $event->getBlock();
-        if ($block instanceof SignPost) {
+        $block = $e->getBlock();
+        if ($block instanceof Sign) {
             $id = ($b = $e->getBlock())->getId();
-            if(in_array($id, [Block::SIGN_POST])){
+            if(in_array($id, [Item::SIGN])){
                 foreach($this->arenaManager->config->get("signs") as $sign => $pos){
                     if($pos = [$b->x, $b->y, $b->z, $b->level]){
                         $this->arenaManager->addNewPlayerToQueue($e->getPlayer());
