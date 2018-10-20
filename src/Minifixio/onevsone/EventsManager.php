@@ -57,7 +57,7 @@ class EventsManager implements Listener{
     }
 
     public function onInteract(PlayerInteractEvent $e){
-        $block = $event->getBlock();
+        $block = $e->getBlock();
         if ($block instanceof SignPost) {
             $id = ($b = $e->getBlock())->getId();
             if(in_array($id, [Block::SIGN_POST])){
