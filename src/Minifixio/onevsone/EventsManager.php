@@ -36,7 +36,7 @@ class EventsManager implements Listener{
             $arena->onPlayerDeath($deadPlayer);
         }
     }
-    public function tileupdate(SignChangeEvent $event){
+    public function tileupdate(SignChangeEvent $event){ //To-do fix / rewrite the signs system.
         if($event->getBlock()->getId() == Item::SIGN_POST){
             $signTile = $event->getPlayer()->getLevel()->getTile($event->getBlock());
             if(!$signTile instanceof Sign){
@@ -56,7 +56,7 @@ class EventsManager implements Listener{
         return false;
     }
 
-    public function onInteract(PlayerInteractEvent $e){
+    public function onInteract(PlayerInteractEvent $e){ //To-do fix / rewrite the signs system.
         $block = $e->getBlock();
         if ($block instanceof SignPost) {
             $id = ($b = $e->getBlock())->getId();
