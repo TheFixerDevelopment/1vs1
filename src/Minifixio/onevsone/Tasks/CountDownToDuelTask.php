@@ -7,7 +7,6 @@ use Minifixio\onevsone\Arena;
 use pocketmine\Player;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
-use pocketmine\plugin\Plugin;
 
 // Plugin imports
 use Minifixio\onevsone\OneVsOne;
@@ -15,18 +14,21 @@ use Minifixio\onevsone\OneVsOne;
 
 class CountDownToDuelTask extends Task{
 
-    const COUNTDOWN_DURATION = 5;
+   public const COUNTDOWN_DURATION = 5;
 
     private $arena;
+    
+    private $plugin;
+    
     private $countdownValue;
 
-    public function __construct(Plugin $owner, Arena $arena){
-        $this->owner = $owner;
+    public function __construct(OneVsOne $plugin, Arena $arena){
+        $this->plugin = $plugin;
         $this->arena = $arena;
         $this->countdownValue = self::COUNTDOWN_DURATION;
     }
 
-    public function onRun(int $currentTick): void{
+    public function onRun(int $currentTick) : void {
         if(count($this->arena->players) < 2){
             $this->arena->abortDuel();
             return;
