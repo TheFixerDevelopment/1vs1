@@ -37,7 +37,7 @@ class EventsManager implements Listener{
         }
     }
     public function tileupdate(SignChangeEvent $event){
-        if($event->getBlock()->getId() == Item::SIGN_POST){
+        if($event->getBlock()->getId() == Item::SIGN){
             $signTile = $event->getPlayer()->getLevel()->getTile($event->getBlock());
             if(!$signTile instanceof Sign){
                 return false;
@@ -56,14 +56,14 @@ class EventsManager implements Listener{
         return false;
     }
 
-    public function onInteract(PlayerInteractEvent $e){
-        $block = $e->getBlock();
+    public function onInteract(PlayerInteractEvent $event){
+        $block = $event->getBlock();
         if ($block instanceof Sign) {
-            $id = ($b = $e->getBlock())->getId();
+            $id = ($b = $event->getBlock())->getId();
             if(in_array($id, [Item::SIGN])){
                 foreach($this->arenaManager->config->get("signs") as $sign => $pos){
                     if($pos = [$b->x, $b->y, $b->z, $b->level]){
-                        $this->arenaManager->addNewPlayerToQueue($e->getPlayer());
+                        $this->arenaManager->addNewPlayerToQueue($event->getPlayer());
                     }
                 }
             }
