@@ -7,24 +7,24 @@ use Minifixio\onevsone\Arena;
 use pocketmine\Player;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
-use pocketmine\plugin\Plugin;
+use Minidixio\onevsone\OneVsOne;
 
 class GameTimeTask extends Task{
 	
 	private $roundDuration;
 
-	/** @var Plugin  */
-	private $owner;
+	/** @var OneVsOne  */
+	private $plugin;
 	/** @var Arena  */
 	private $arena;
 	
-	public function __construct(Plugin $owner, Arena $arena){
-		$this->owner = $owner;
+	public function __construct(OneVsOne $plugin, Arena $arena){
+		$this->plugin = $plugin;
 		$this->arena = $arena;
 		$this->roundDuration= $owner->getConfig()->get("time-limit") * 60;
 	}
 	
-	public function onRun(int $currentTick) : void{
+	public function onRun(int $currentTick) : void {
 		if(count($this->arena->players) < 2){
 			$this->arena->abortDuel();
 		}
