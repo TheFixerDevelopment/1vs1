@@ -178,6 +178,8 @@ class Arena{
 
         // Heal winner
         $winner->setHealth(20);
+        $winner->getInventory()->clearAll();
+        $winner->getArmorInventory()->clearAll();
         Server::getInstance()->broadcastMessage(TextFormat::GREEN . TextFormat::BOLD . "» " . TextFormat::GOLD . $winner->getName() . TextFormat::WHITE . OneVsOne::getMessage("duel_broadcast") . TextFormat::RED . $loser->getName() . TextFormat::WHITE . " !");
 
         // Reset arena
