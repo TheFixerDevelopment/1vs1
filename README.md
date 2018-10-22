@@ -31,11 +31,13 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 ### Commands:
 -> /match : Join the 1vs1 queue (Everyone can use that command)
 
--> /arena : Create a new arena - OPS only
+-> /arena : Arena command usage
 
 -> /arena 1 : Set positon 1 in your arena (Where you're standing.)
 
 -> /arena 2 : Set positon 2 in your arena (Where you're standing.)
+
+-> /arena create : Creates a new arena - OPS ONLY
 
 ### Notes:
 
