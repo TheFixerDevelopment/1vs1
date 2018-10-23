@@ -1,10 +1,10 @@
-###1vs1 plugin by Minifixio, edited by Zeao, fixed by NickTehUnicorn.
+### 1vs1 plugin by Minifixio, edited by Zeao, fixed by NickTehUnicorn.
 
-###Description:
+### Description:
 
 Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for you!
 
-###Features
+### Features
 
 -> Multi-arena system
 
@@ -12,7 +12,7 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 
 -> Statistics signs
 
-###How to use:
+### How to use:
 
 -> First, you'll need to create your arena(s) by using: /arena create where your arena is. The players will spawn where you set /area 1 (Player1) and /area 2 (Player2) (see example below). You can make an unlimited numbers of arenas. All the arenas positions are saved in data.yml file.
 
@@ -20,7 +20,7 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 
 -> You can place a sign and write « [1vs1] » on the 1st line to have a 1vs1 stats sign with the numbers of active arenas and the number of the players in the queue. The signs refreshes every 5 seconds.
 
-###Technical:
+### Technical:
 
 -> After a fight, the players are teleported back to the spawn of the default level server.
 
@@ -30,7 +30,7 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 
 -> When a player quits during the start match countdown, the match stops.
 
-###Commands:
+### Commands:
 
 -> /match : Join the 1vs1 queue (Everyone can use that command)
 
@@ -40,6 +40,6 @@ Do you want to make 1vs1 matches on your MCPE server? Then this plugin is for yo
 
 -> /arena create : Creates a new arena - OPS ONLY
 
-###Notes:
+### Notes:
 
 -> Any remarks? Let us know, by opening a new issue.
