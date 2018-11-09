@@ -180,7 +180,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        Server::getInstance()->broadcastMessage(TextFormat::GREEN . TextFormat::BOLD . "» " . TextFormat::GOLD . $winner->getName() . TextFormat::WHITE . OneVsOne::getMessage("duel_broadcast") . TextFormat::RED . $loser->getName() . TextFormat::WHITE . " !");
+        Server::getInstance()->broadcastMessage(TextFormat::RESET . str_replace("{health}", "{maxhealth}", "{winner}", "{loser}", $winner->getHealth(), $winner->getMaxHealth(), $winner->getName(), $loser->getName() . OneVsOne::getMessage("duel_broadcast")));
 
         // Reset arena
         $this->reset();
@@ -226,7 +226,7 @@ class Arena{
     public function onRoundEnd(){
         foreach($this->players as $player){
             $player->teleport($player->getSpawn());
-            $player->sendMessage(TextFormat::BOLD . "++++++++=++++++++");
+            $player->sendMessage(TextFormat::BOLD . "++++++++=++++++++"); //To-Do make this configurable.
             $player->sendMessage(OneVsOne::getMessage("duel_timeover"));
             $player->sendMessage(TextFormat::BOLD . "++++++++=++++++++");
             $player->removeAllEffects();
@@ -247,6 +247,3 @@ class Arena{
         $player->getLevel()->addParticle($particle);
     }
 }
-
-
-
