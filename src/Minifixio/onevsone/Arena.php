@@ -84,8 +84,8 @@ class Arena{
         $player1 = $players[0];
         $player2 = $players[1];
 
-        $player1->sendMessage(str_replace("{player2}", $player2->getName(), OneVsOne::getMessage("duel_against")));
-        $player2->sendMessage(str_replace("{player1}", $player1->getName(), OneVsOne::getMessage("duel_against")));
+        $player1->sendMessage(str_replace("{player1}", "{player2}", $player1->getName(), $player2->getName(), OneVsOne::getMessage("duel_against")));
+        $player2->sendMessage(str_replace("{player2}", "{player1}" $player2->getName(), $player1->getName(), OneVsOne::getMessage("duel_against")));
 
         // Create a new countdowntask
         $task = new CountDownToDuelTask(OneVsOne::getInstance(), $this);
@@ -180,7 +180,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        Server::getInstance()->broadcastMessage(TextFormat::RESET . str_replace("{health}", "{maxhealth}", "{winner}", "{loser}", $winner->getHealth(), $winner->getMaxHealth(), $winner->getName(), $loser->getName() . OneVsOne::getMessage("duel_broadcast")));
+        Server::getInstance()->broadcastMessage(TextFormat::RESET . str_replace("{health}", "{maxhealth}", "{winner}", "{loser}", $winner->getHealth(), $winner->getMaxHealth(), $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
 
         // Reset arena
         $this->reset();
