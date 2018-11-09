@@ -27,7 +27,10 @@ duel_against: "&6&l>> Duel against &4 "
 duel_start: "&f&l++++++++=++++++++\n&6> You are starting a duel!\n&6> You have &23 minutes!\n&6> Good luck :)\n&f&l++++++++=++++++++"
 duel_winner: "&6&l> You won the duel against &4 "
 duel_loser: "&6&l> You've lost the duel against &4 "
-duel_broadcast: "&6&l won a duel against "
+duel_broadcast: "&5{winner} &dwon a duel against &5{loser}! &dThe winner had: &5{health}/{maxhealth} health left!"
+## Use {winner} for the winner's name, and {loser} for the loser's name.
+## Also use: {health} for the winner's health, and {maxhealth} for the winner's maximum health.
+
 duel_timeover: "&f&l++++++++=++++++++\n&6> Playing time &6over&6, no winners!\n&6> Be faster next time!\n&f&l++++++++=++++++++"
 countdown_timer: "&a&lDuel will be starting in &r&b{CD} &cseconds..."
 #Use {CD} for countdown timer. {CD} is how many seconds before the game starts.
