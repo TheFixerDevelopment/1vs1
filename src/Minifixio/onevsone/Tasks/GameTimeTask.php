@@ -37,8 +37,8 @@ class GameTimeTask extends Task{
 				$this->arena->abortDuel();
 			}
 			else{
-				$player1->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->roundDuration . TextFormat::RESET . " seconds"); //Make this configurable in the future.
-				$player2->sendPopup(TextFormat::GOLD . TextFormat::BOLD . "Battle Ends in " . $this->roundDuration . TextFormat::RESET . " seconds"); //Make this configurable in the future.
+				$player1->sendPopup(TextFormat::RESET . str_replace("{roundtime}", $this->roundDuration, OneVsOne::getMessage("round_duration")));
+				$player2->sendPopup(TextFormat::RESET . str_replace("{roundtime}", $this->roundDuration, OneVsOne::getMessage("round_duration")));
 				$this->roundDuration--;
 				
 				// If duration is exceeded, end match.

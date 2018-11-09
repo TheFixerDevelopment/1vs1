@@ -84,8 +84,8 @@ class Arena{
         $player1 = $players[0];
         $player2 = $players[1];
 
-        $player1->sendMessage(OneVsOne::getMessage("duel_against") . $player2->getName());
-        $player2->sendMessage(OneVsOne::getMessage("duel_against") . $player1->getName());
+        $player1->sendMessage(str_replace("{player2}", $player2->getName(), OneVsOne::getMessage("duel_against")));
+        $player2->sendMessage(str_replace("{player1}", $player1->getName(), OneVsOne::getMessage("duel_against")));
 
         // Create a new countdowntask
         $task = new CountDownToDuelTask(OneVsOne::getInstance(), $this);
@@ -125,10 +125,10 @@ class Arena{
         $this->startTime = new DateTime('now');
 
         $player1->sendTip(OneVsOne::getMessage("duel_tip"));
-        $player1->sendMessage(OneVsOne::getMessage("duel_start"));
+        $player1->sendMessage(str_replace("{roundtime}", OneVsOne::getInstance()->getConfig()->get("time-limit"), OneVsOne::getMessage("duel_start")));
 
         $player2->sendTip(OneVsOne::getMessage("duel_tip"));
-        $player2->sendMessage(OneVsOne::getMessage("duel_start"));
+        $player2->sendMessage(str_replace("{roundtime}", OneVsOne::getInstance()->getConfig()->get("time-limit"), OneVsOne::getMessage("duel_start")));
     }
 
     /**
@@ -143,15 +143,15 @@ class Arena{
         $player->getInventory()->clearAll();
 
         // Give sword, and food
-        $player->getInventory()->addItem(Item::get(ITEM::IRON_SWORD));
-        $player->getInventory()->addItem(Item::get(ITEM::BREAD));
-        $player->getInventory()->setItemInHand(Item::get(ITEM::IRON_SWORD));
+        $player->getInventory()->addItem(Item::get(OneVsOne::getInstance()->getConfig()->get("item1")));
+        $player->getInventory()->addItem(Item::get(OneVsOne::getInstance()->getConfig()->get("item2")));
+        $player->getInventory()->setItemInHand(Item::get(OneVsOne::getInstance()->getConfig()->get("item_in_hand")));
 
         // Pur the armor on the player
-        $player->getArmorInventory()->setHelmet(Item::get(302, 0, 1)); //TODO: Make configurable.
-        $player->getArmorInventory()->setChestplate(Item::get(303, 0, 1));
-        $player->getArmorInventory()->setLeggings(Item::get(304, 0, 1));
-        $player->getArmorInventory()->setBoots(Item::get(305, 0, 1));
+        $player->getArmorInventory()->setHelmet(Item::get(OneVsOne::getInstance()->getConfig()->get("helmet_ids"), OneVsOne::getInstance()->getConfig()->get("helmet_meta"), OneVsOne::getInstance()->getConfig()->get("helmet_amount")));
+        $player->getArmorInventory()->setChestplate(Item::get(OneVsOne::getInstance()->getConfig()->get("chestplate_ids"), OneVsOne::getInstance()->getConfig()->get("chestplate_meta"), OneVsOne::getInstance()->getConfig()->get("chestplate_amount")));
+        $player->getArmorInventory()->setLeggings(Item::get(OneVsOne::getInstance()->getConfig()->get("leggings_ids"), OneVsOne::getInstance()->getConfig()->get("leggings_meta"), OneVsOne::getInstance()->getConfig()->get("leggings_amount")));
+        $player->getArmorInventory()->setBoots(Item::get(OneVsOne::getInstance()->getConfig()->get("boots_ids"), OneVsOne::getInstance()->getConfig()->get("boots_meta"), OneVsOne::getInstance()->getConfig()->get("boots_amount")));
         $player->getArmorInventory()->sendContents($player);
 
         // Set his life to 20
@@ -167,10 +167,10 @@ class Arena{
         // Finish the duel and teleport the winner at spawn
         $loser == $this->players[0] ? $winner = $this->players[1] : $winner = $this->players[0];
 
-        $loser->sendMessage(OneVsOne::getMessage("duel_loser") . $winner->getName());
+        $loser->sendMessage(str_replace("{winner}", $winner->getName(), OneVsOne::getMessage("duel_loser")));
         $loser->removeAllEffects();
 
-        $winner->sendMessage(OneVsOne::getMessage("duel_winner") . $loser->getName());
+        $winner->sendMessage(str_replace("{loser}", $loser->getName(), OneVsOne::getMessage("duel_winner")));
         $winner->removeAllEffects();
 
         // Teleport the winner to spawn
@@ -226,9 +226,7 @@ class Arena{
     public function onRoundEnd(){
         foreach($this->players as $player){
             $player->teleport($player->getSpawn());
-            $player->sendMessage(TextFormat::BOLD . "++++++++=++++++++"); //To-Do make this configurable.
             $player->sendMessage(OneVsOne::getMessage("duel_timeover"));
-            $player->sendMessage(TextFormat::BOLD . "++++++++=++++++++");
             $player->removeAllEffects();
             $player->getArmorInventory()->clearAll();
             $player->getInventory()->clearAll();
