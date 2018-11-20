@@ -27,8 +27,8 @@ class CountDownToDuelTask extends Task{
         $this->arena = $arena;
         $this->countdownValue = self::COUNTDOWN_DURATION;
     }
-
     public function onRun(int $currentTick) : void {
+
         if(count($this->arena->players) < 2){
             $this->arena->abortDuel();
             return;
@@ -45,8 +45,8 @@ class CountDownToDuelTask extends Task{
         if($this->countdownValue == 0){
             $this->arena->startDuel();
         }
-        $player1->sendTip(TextFormat::GOLD . TextFormat::BOLD . str_replace("{CD}", $this->countdownValue . TextFormat::RESET, OneVsOne::getMessage("countdown_timer")));
-        $player2->sendTip(TextFormat::GOLD . TextFormat::BOLD . str_replace("{CD}", $this->countdownValue . TextFormat::RESET, OneVsOne::getMessage("countdown_timer")));
+        $player1->sendTip(TextFormat::RESET . str_replace("{CD}", $this->countdownValue, OneVsOne::getMessage("countdown_timer")));
+        $player2->sendTip(TextFormat::RESET . str_replace("{CD}", $this->countdownValue, OneVsOne::getMessage("countdown_timer")));
         $this->countdownValue--;
     }
 }

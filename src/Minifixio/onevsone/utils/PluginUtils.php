@@ -30,7 +30,7 @@ class PluginUtils{
      * @param string $message
      */
     public static function sendDefaultMessage(Player $player, string $message){
-        $player->sendMessage(TextFormat::GOLD . TextFormat::BOLD . OneVsOne::getMessage("pluginprefix ") . TextFormat::WHITE . $message);
+        $player->sendMessage(TextFormat::RESET . OneVsOne::getMessage("pluginprefix ") . TextFormat::RESET . $message);
     }
 }
 

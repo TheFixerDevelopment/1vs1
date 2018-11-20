@@ -7,7 +7,7 @@ use pocketmine\tile\Sign;
 use pocketmine\item\Item;
 use pocketmine\block\Block;
 use pocketmine\event\Listener;
-use pocketmine\event\player\{PlayerInteractEvent, PlayerQuitEvent, PlayerDeathEvent};
+use pocketmine\event\player\{PlayerQuitEvent, PlayerDeathEvent};
 use pocketmine\event\block\SignChangeEvent;
 
 //Plugin imports
@@ -32,9 +32,11 @@ class EventsManager implements Listener{
         $arena = $this->arenaManager->getPlayerArena($deadPlayer);
         if($arena != null){
             $event->setDrops([]);
+			if(OneVsOne::getInstance()->getConfig()->get("keep-inventory") === false) {
             $event->setKeepInventory(false);
             $arena->onPlayerDeath($deadPlayer);
         }
+   }
     }
     public function tileupdate(SignChangeEvent $event){ //To-do fix / rewrite the signs system.
         if($event->getBlock()->getId() == Item::SIGN_POST){
@@ -68,4 +70,4 @@ class EventsManager implements Listener{
             }
         }
     }
-    }
+}

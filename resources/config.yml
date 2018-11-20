@@ -12,4 +12,27 @@ time-limit: 3
 
 # If you want to force the kits:
 force-kit: true
+
+# Keep Inventory
+
+# Do you want to keep inventory turned on when a player dies in a 1vs1 match?
+
+keep-inventory: false
+
+# ITEMS
+# To-do add unlimited items.
+# You can now configure items to see which one you'd want the players to have in a 1vs1 match!
+
+## Keep in mind - item1, item2, and item_in_hand can be configurable via item ids, not item names.
+item1: 276
+item2: 268
+item_in_hand: 276
+
+# Armor
+## Keep in mind - All armours rely on item ids, not item names. So be cautions when using it. Thank you.
+
+helmet_ids: 310
+chestplate_ids: 311
+leggings_ids: 312
+boots_ids: 313
 ...
