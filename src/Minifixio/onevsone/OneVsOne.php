@@ -9,6 +9,8 @@ use pocketmine\plugin\PluginBase;
 //Plugin imports
 use Minifixio\onevsone\utils\PluginUtils;
 use Minifixio\onevsone\Commands\{ArenaCommand, JoinCommand};
+use Minifixo\onevsone\ArenaManager;
+use Minifixo\onevsone\EventsManager;
 
 
 class OneVsOne extends PluginBase{
@@ -25,12 +27,12 @@ class OneVsOne extends PluginBase{
     /** @var Config */
     public $messages;
 
-    public CONST SIGN_TITLE = '[1vs1]';
+    public const SIGN_TITLE = '[1vs1]';
 
     /**
      * Plugin is enabled by PocketMine server
      */
-    public function onEnable(): void {
+    protected function onEnable() : void {
         self::$instance = $this;
         PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED . " 1vs1 " . TextFormat::GREEN . "plugin");
 
@@ -57,17 +59,14 @@ class OneVsOne extends PluginBase{
         $arenaCommand = new ArenaCommand($this, $this->arenaManager);
         $this->getServer()->getCommandMap()->register($arenaCommand->commandName, $arenaCommand);
     }
-
-    public function getPrefix(): string {
+    public function getPrefix() : string{
         $prefix = $this->messages->get("pluginprefix");
         $finalPrefix = str_replace("&", "§", $prefix);
         return $finalPrefix . " ";
     }
-
-    public static function getInstance(): self {
+    public static function getInstance() : self {
         return self::$instance;
     }
-
     public static function getMessage(string $message = ""): string {
         if(($msg = self::getInstance()->messages->get($message)) !== null){
             $finalMessage = str_replace("&", "§", $msg);
