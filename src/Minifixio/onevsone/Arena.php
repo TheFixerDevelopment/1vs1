@@ -84,8 +84,8 @@ class Arena{
         $player1 = $players[0];
         $player2 = $players[1];
 
-        $player1->sendMessage(str_replace("{player1}", "{player2}", $player1->getName(), $player2->getName(), OneVsOne::getMessage("duel_against")));
-        $player2->sendMessage(str_replace("{player2}", "{player1}" $player2->getName(), $player1->getName(), OneVsOne::getMessage("duel_against")));
+        $player1->sendMessage(OneVsOne::getMessage("duel_against") . $player2->getName());
+        $player2->sendMessage(OneVsOne::getMessage("duel_against") . $player1->getName());
 
         // Create a new countdowntask
         $task = new CountDownToDuelTask(OneVsOne::getInstance(), $this);
