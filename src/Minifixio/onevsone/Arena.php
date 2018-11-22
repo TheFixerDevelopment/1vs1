@@ -141,13 +141,19 @@ class Arena{
     private function giveKit(Player $player){
         // Clear inventory
         $player->getInventory()->clearAll();
-		$this->parseItems();
-        // Set his life to 20
+	     // Set his life to 20
         $player->setHealth(20);
         $player->removeAllEffects();
+	     $items = [];
+	    foreach($player as $item) {
+            $item = self::parseItems($item);
+            if($item instanceof Item) {
+                $items[] = $item;
+            }
+        }
+        return $items;
     }
-    /**
-     * Parse an Item
+     /* Parse an Item
      *
      * @param string $string
      * @return null|Item
@@ -208,7 +214,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        Server::getInstance()->broadcastMessage(str_replace("{winner}", "{loser}", $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
+        $this->plugin->getServer()->broadcastMessage(str_replace("{winner}", "{loser}", $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
 
         // Reset arena
         $this->reset();
