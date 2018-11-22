@@ -33,7 +33,7 @@ class ArenaCommand extends Command{
 
     public function execute(CommandSender $sender, string $label, array $params): bool{
         if(count($params) !== 1){
-            $sender->sendMessage(TextFormat::RED . $this->getUsage());
+            $sender->sendMessage($this->getUsage());
             return true;
         }
 
