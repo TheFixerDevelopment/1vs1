@@ -175,7 +175,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        Server::getInstance()->broadcastMessage(str_replace("{winner}", "{loser}"), $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast"));
+        Server::getInstance()->broadcastMessage(str_replace("{winner}", "{loser}", $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
 
         // Reset arena
         $this->reset();
