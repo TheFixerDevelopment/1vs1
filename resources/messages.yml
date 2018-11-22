@@ -22,9 +22,9 @@ no_freearena: "There is currently no free arenas available, or they are all in u
 ##############
 #Duel messages
 ##############
-duel_tip: "&6» You are starting a duel!"
-duel_against: "&5{player1} &dVS &5{player2} - &dGame starting shortly, good luck!"
-## Use {player1} for player 1, and {player2} for Player 2.
+duel_tip: "&d» You are starting a duel!"
+duel_against: "&dYou are going against "
+## To-Do customise this message.
 
 duel_start: "&f&l++++++++=++++++++\n&6> You are starting a duel!\n&6> You have &2{roundtime} minutes!\n&6> Good luck :)\n&f&l++++++++=++++++++"
 ## Use {roundtime} to detect how much time in the time you configured in the config, where it says: time-limit.
@@ -37,7 +37,7 @@ duel_winner: "&6&l> You won the duel against &4 {loser}"
 duel_loser: "&6&l> You've lost the duel against &4 {winner}"
 ## Use {winner} to replace the winner of the specific match.
 
-duel_broadcast: "&5{winner} &dwon a duel against &5{loser}! &dThe winner had: &5{health}/{maxhealth} health left!"
+duel_broadcast: "&5{winner} &dwon a duel against &5{loser}!"
 ## Use {winner} for the winner's name, and {loser} for the loser's name.
 ## Also use: {health} for the winner's health, and {maxhealth} for the winner's maximum health.
 

@@ -84,8 +84,8 @@ class Arena{
         $player1 = $players[0];
         $player2 = $players[1];
 
-        $player1->sendMessage(OneVsOne::getMessage("duel_against") . $player2->getName());
-        $player2->sendMessage(OneVsOne::getMessage("duel_against") . $player1->getName());
+        $player1->sendMessage(OneVsOne::getMessage("duel_against") . $player2->getName()); //To-Do customise to make it better.
+        $player2->sendMessage(OneVsOne::getMessage("duel_against") . $player1->getName()); //To-Do customise to make it better.
 
         // Create a new countdowntask
         $task = new CountDownToDuelTask(OneVsOne::getInstance(), $this);
@@ -141,19 +141,14 @@ class Arena{
     private function giveKit(Player $player){
         // Clear inventory
         $player->getInventory()->clearAll();
-
-        // Give sword, and food
-        $player->getInventory()->addItem(Item::get(OneVsOne::getInstance()->getConfig()->get("item1")));
-        $player->getInventory()->addItem(Item::get(OneVsOne::getInstance()->getConfig()->get("item2")));
-        $player->getInventory()->setItemInHand(Item::get(OneVsOne::getInstance()->getConfig()->get("item_in_hand")));
-
-        // Pur the armor on the player
-        $player->getArmorInventory()->setHelmet(Item::get(OneVsOne::getInstance()->getConfig()->get("helmet_ids"), OneVsOne::getInstance()->getConfig()->get("helmet_meta"), OneVsOne::getInstance()->getConfig()->get("helmet_amount")));
-        $player->getArmorInventory()->setChestplate(Item::get(OneVsOne::getInstance()->getConfig()->get("chestplate_ids"), OneVsOne::getInstance()->getConfig()->get("chestplate_meta"), OneVsOne::getInstance()->getConfig()->get("chestplate_amount")));
-        $player->getArmorInventory()->setLeggings(Item::get(OneVsOne::getInstance()->getConfig()->get("leggings_ids"), OneVsOne::getInstance()->getConfig()->get("leggings_meta"), OneVsOne::getInstance()->getConfig()->get("leggings_amount")));
-        $player->getArmorInventory()->setBoots(Item::get(OneVsOne::getInstance()->getConfig()->get("boots_ids"), OneVsOne::getInstance()->getConfig()->get("boots_meta"), OneVsOne::getInstance()->getConfig()->get("boots_amount")));
-        $player->getArmorInventory()->sendContents($player);
-
+		$arrayItems = OneVsOne::getInstance()->getConfig()->get("duel_items");
+                  foreach($arrayItems as $items) {
+                    $arrayItems = implode(" ", $items);
+                    $id = $arrayItems[0];
+                    $damage = $arrayItems[1];
+                    $count = $arrayItems[2];
+                    $player->getInventory()->addItem(Item::get($id, $damage, $count));
+                  }
         // Set his life to 20
         $player->setHealth(20);
         $player->removeAllEffects();
@@ -180,8 +175,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        Server::getInstance()->broadcastMessage(str_replace("{health}", "{maxhealth}", $winner->getHealth(), $winner->getMaxHealth(), OneVsOne::getMessage("duel_broadcast")));
-        Server::getInstance()->broadcastMessage(str_replace("{winner}", "{loser}", $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
+        Server::getInstance()->broadcastMessage(str_replace("{winner}", "{loser}"), $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast"));
 
         // Reset arena
         $this->reset();

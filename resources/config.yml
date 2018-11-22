@@ -15,24 +15,17 @@ force-kit: true
 
 # Keep Inventory
 
-# Do you want to keep inventory turned on when a player dies in a 1vs1 match?
+# Do you want to keep inventory turned on when a player dies in a 1vs1 match? - Currently experiamental.
 
 keep-inventory: false
 
-# ITEMS
-# To-do add unlimited items.
-# You can now configure items to see which one you'd want the players to have in a 1vs1 match!
-
-## Keep in mind - item1, item2, and item_in_hand can be configurable via item ids, not item names.
-item1: 276
-item2: 268
-item_in_hand: 276
-
-# Armor
-## Keep in mind - All armours rely on item ids, not item names. So be cautions when using it. Thank you.
-
-helmet_ids: 310
-chestplate_ids: 311
-leggings_ids: 312
-boots_ids: 313
+duel_items:
+- 276, 0, 1
+- 310, 0, 1
+- 311, 0, 1
+- 312, 0, 1
+- 313, 0, 1
+## Items to duel with! Requires item numbers instead of item names, so for example, 276 would be a diamond sword.
+## You can add as many items as you wish.
+## To-Do add armor auto equip instead of manual equip on duel start.
 ...
