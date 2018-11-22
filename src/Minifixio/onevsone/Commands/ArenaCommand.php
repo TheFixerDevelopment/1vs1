@@ -6,7 +6,6 @@ namespace Minifixio\onevsone\Commands;
 use pocketmine\command\{CommandSender, Command};
 use pocketmine\level\Location;
 use pocketmine\Player;
-use pocketmine\utils\TextFormat;
 
 //Plugin imports
 use Minifixio\onevsone\ArenaManager;
@@ -47,11 +46,11 @@ class ArenaCommand extends Command{
             switch(strtolower($params[0])){
                 case "1":
                     $this->pos1[$sender->getName()] = [$sender->getX(), $sender->getY(), $sender->getZ(), $sender->getYaw(), $sender->getPitch(), $sender->getLevel()];
-                    $sender->sendMessage(OneVsOne::getMessage("pluginprefix") . TextFormat::GREEN . OneVsOne::getMessage("arena_pos1"));
+                    $sender->sendMessage(OneVsOne::getMessage("pluginprefix ") . OneVsOne::getMessage("arena_pos1"));
                     return true;
                 case "2":
                     $this->pos2[$sender->getName()] = [$sender->getX(), $sender->getY(), $sender->getZ(), $sender->getYaw(), $sender->getPitch(), $sender->getLevel()];
-                    $sender->sendMessage(OneVsOne::getMessage("pluginprefix") . TextFormat::GREEN . OneVsOne::getMessage("arena_pos2"));
+                    $sender->sendMessage(OneVsOne::getMessage("pluginprefix ") . OneVsOne::getMessage("arena_pos2"));
                     return true;
                 case "create":
                     if(isset($this->pos1[$sender->getName()]) && isset($this->pos2[$sender->getName()])){
@@ -62,12 +61,12 @@ class ArenaCommand extends Command{
                         unset($this->pos1[$sender->getName()]);
                         unset($this->pos2[$sender->getName()]);
                         $this->arenaManager->referenceNewArena($spawn1, $spawn2);
-                        $sender->sendMessage(str_replace("{arenacount}", $this->arenaManager->getNumberOfArenas() . TextFormat::RESET, OneVsOne::getMessage("arena_created")));
+                        $sender->sendMessage(str_replace("{arenacount}", $this->arenaManager->getNumberOfArenas(), OneVsOne::getMessage("arena_created")));
                         return true;
                     }
             }
         }else{
-            $sender->sendMessage(TextFormat::RED . OneVsOne::getMessage("op_only"));
+            $sender->sendMessage(OneVsOne::getMessage("op_only"));
             return false;
         }
 
