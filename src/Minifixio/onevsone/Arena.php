@@ -141,18 +141,51 @@ class Arena{
     private function giveKit(Player $player){
         // Clear inventory
         $player->getInventory()->clearAll();
-		$arrayItems = OneVsOne::getInstance()->getConfig()->get("duel_items");
-                  foreach($arrayItems as $items) {
-                    $arrayItems = implode(" ", $items);
-                    $id = $arrayItems[0];
-                    $damage = $arrayItems[1];
-                    $count = $arrayItems[2];
-                    $player->getInventory()->addItem(Item::get($id, $damage, $count));
-                  }
+		$this->parseItems();
         // Set his life to 20
         $player->setHealth(20);
         $player->removeAllEffects();
     }
+    /**
+     * Parse an Item
+     *
+     * @param string $string
+     * @return null|Item
+     */
+    public static function parseItem($string): ?Item {
+        $array = explode(",", $string);
+        foreach($array as $key => $value) {
+            $array[$key] = (int) $value;
+        }
+        if(isset($array[1])) {
+            $item = Item::get($array[0], $array[1], $array[2]);
+            if(isset($array[4])) {
+                $item->addEnchantment(new EnchantmentInstance(Enchantment::getEnchantment($array[3]), $array[4]));
+            }
+            return $item;
+        }
+        else {
+            return null;
+        }
+    }
+    
+    /**
+     * Parse items
+     *
+     * @param array $array
+     * @return []Item
+     */
+    public static function parseItems($array): array {
+        $items = [];
+        foreach($array as $item) {
+            $item = self::parseItem($item);
+            if($item instanceof Item) {
+                $items[] = $item;
+            }
+        }
+        return $items;
+    }
+
 
     /**
      * When a player was killed
