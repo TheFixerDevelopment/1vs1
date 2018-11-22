@@ -25,12 +25,45 @@ class OneVsOne extends PluginBase{
     /** @var Config */
     public $messages;
 
-    public CONST SIGN_TITLE = '[1vs1]';
-
+    public const SIGN_TITLE = '[1vs1]';
+	
+	/** @var string */
+	private const CONFIG_VER = "1.0.0";
+	
+	private const MESSAGES_VER = "1.0.0";
+	
+	/**
+	 * Check if the config is up-to-date.
+	 */
+	public function ConfigCheck(): void{
+		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
+		if((!$config->exists("config-version")) || ($config->get("config-version") !== self::CONFIG_VER)){
+			rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config_old.yml");
+			$this->saveResource("config.yml");
+			$this->getLogger()->critical("Your configuration file is outdated.");
+			$this->getLogger()->notice("Your old configuration has been saved as config_old.yml and a new configuration file has been generated.");
+			return;
+		}
+	}
+	/**
+	 * Check if the config is up-to-date.
+	 */
+	public function MessagesCheck(): void{
+		$message = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+		if((!$config->exists("messages-version")) || ($config->get("message-version") !== self::MESSAGES_VER)){
+			rename($this->getDataFolder() . "messages.yml", $this->getDataFolder() . "messages_old.yml");
+			$this->saveResource("messages.yml");
+			$this->getLogger()->critical("Your configuration file is outdated.");
+			$this->getLogger()->notice("Your old configuration has been saved as messages_old.yml and a new configuration file has been generated.");
+			return;
+		}
+	}
     /**
      * Plugin is enabled by PocketMine server
      */
     public function onEnable(): void {
+		$this->ConfigCheck();
+		$this->MessagesCheck();
         self::$instance = $this;
         PluginUtils::logOnConsole(TextFormat::GREEN . "Init" . TextFormat::RED . " 1vs1 " . TextFormat::GREEN . "plugin");
 

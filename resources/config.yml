@@ -4,6 +4,7 @@
 
 ###############
 #1vs1 settings
+config-version: "1.0.0"
 ###############
 # Time limit for each duel, in minutes:
 time-limit: 3

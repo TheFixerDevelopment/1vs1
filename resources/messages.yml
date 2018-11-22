@@ -9,6 +9,7 @@
 pluginprefix: "&7[&6&l1&4vs&61&r&7]"
 console_only: "You must be in console to execute this command."
 op_only: "&2You must be OP to use this command."
+messages-version: "1.0.0"
 
 ###############
 #Queue messages
