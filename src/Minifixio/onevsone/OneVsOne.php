@@ -35,7 +35,7 @@ class OneVsOne extends PluginBase{
 	/**
 	 * Check if the config is up-to-date.
 	 */
-	public function ConfigCheck(): void{
+	public function ConfigCheck(): void {
 		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML);
 		if((!$config->exists("config-version")) || ($config->get("config-version") !== self::CONFIG_VER)){
 			rename($this->getDataFolder() . "config.yml", $this->getDataFolder() . "config_old.yml");
@@ -48,9 +48,9 @@ class OneVsOne extends PluginBase{
 	/**
 	 * Check if the config is up-to-date.
 	 */
-	public function MessagesCheck(): void{
-		$message = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-		if((!$config->exists("messages-version")) || ($config->get("message-version") !== self::MESSAGES_VER)){
+	public function MessagesCheck(): void {
+		$messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
+		if((!$messages->exists("messages-version")) || ($messages->get("message-version") !== self::MESSAGES_VER)){
 			rename($this->getDataFolder() . "messages.yml", $this->getDataFolder() . "messages_old.yml");
 			$this->saveResource("messages.yml");
 			$this->getLogger()->critical("Your configuration file is outdated.");
