@@ -45,12 +45,12 @@ class EventsManager implements Listener{
 				return true;
 			}
 			$signLines = $event->getLines();
-			if($signLines[0]== OneVsOne::SIGN_TITLE){
+			if($signLines[0] == OneVsOne::getMessage("sign_title")){
 				if($event->getPlayer()->isOp()){
 					$this->arenaManager->addSign($signTile);
-					$event->setLine(1,"-Waiting: "  . $this->arenaManager->getNumberOfPlayersInQueue()); //To-Do make this configurable.
-					$event->setLine(2,"-Arenas:" . $this->arenaManager->getNumberOfFreeArenas()); //To-Do make this configurable.
-					$event->setLine(3,"-+===+-");
+					$event->setLine(1, "-Waiting: "  . $this->arenaManager->getNumberOfPlayersInQueue()); //To-Do make this configurable.
+					$event->setLine(2, "-Arenas:" . $this->arenaManager->getNumberOfFreeArenas()); //To-Do make this configurable.
+					$event->setLine(3, "-+===+-"); //To-Do make this configurable.
 					return true;
 				}
 			}

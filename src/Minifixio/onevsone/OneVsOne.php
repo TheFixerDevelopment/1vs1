@@ -24,13 +24,11 @@ class OneVsOne extends PluginBase{
 
     /** @var Config */
     public $messages;
-
-    public const SIGN_TITLE = '[1vs1]'; //To-Do make this configurable.
 	
 	/** @var string */
 	private const CONFIG_VER = "1.0.0";
 	
-	private const MESSAGES_VER = "1.0.0";
+	private const MESSAGES_VER = "1.0.1";
 	
 	/**
 	 * Check if the config is up-to-date.

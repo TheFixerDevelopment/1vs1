@@ -5,13 +5,14 @@
 
 ###############
 #Plugin Settings
-messages-version: "1.0.0"
+messages-version: "1.0.1"
 ## DO NOT TOUCH the messages-version option, this is for internal use only, and editing it could result in you breaking the plugin.
-
 ###############
+
 pluginprefix: "&7[&6&l1&4vs&61&r&7]"
 console_only: "You must be in console to execute this command."
 op_only: "&2You must be OP to use this command."
+sign_title: "[1vs1]"
 
 ###############
 #Queue messages
@@ -54,7 +55,8 @@ start_duel: "&aStarting duel - &b{rp0}"
 
 start_duel_against: "&aVS &b{rp1}"
 ## This option allows you to change the message of who they're going against. {rp1} is the second player that they're going against.
-## So the message should show up as: Starting duel - 1st player (me) vs 2nd player (other person) 
+## So the message should show up as: Starting duel - 1st player (me) vs 2nd player (other person)
+ 
 ###############
 #Arena messages
 ###############

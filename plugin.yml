@@ -1,6 +1,6 @@
 name: 1vs1
 main: Minifixio\onevsone\OneVsOne
-version: 1.0.3
+version: 1.0.4
 api: [3.0.0]
 description: 1vs1 Plugin
 author: Minifixio, edited by Zeao, fixed by NickTehUnicorn.
