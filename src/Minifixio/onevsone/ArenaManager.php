@@ -111,7 +111,7 @@ class ArenaManager{
                 $tile = $level->getTile($newSignPosition);
                 if($tile !== null){
                     $cleanTileTitle = TextFormat::clean($tile->getText()[0]);
-                    $cleanOnevsOneTitle = TextFormat::clean(OneVsOne::SIGN_TITLE);
+                    $cleanOnevsOneTitle = TextFormat::clean(OneVsOne::getMessage("sign_title"));
 
                     // Load it only if it's a sign with OneVsOne title
                     if($tile !== null && $tile instanceof Sign && $cleanTileTitle === $cleanOnevsOneTitle){
@@ -187,7 +187,7 @@ class ArenaManager{
         }
 
         if($freeArena == null){
-            Server::getInstance()->getLogger()->debug(OneVsOne::getMessage("pluginprefix") . OneVsOne::getMessage("no_freearena"));
+            Server::getInstance()->getLogger()->debug(OneVsOne::getMessage("pluginprefix ") . OneVsOne::getMessage("no_freearena"));
             return false;
         }
 
@@ -309,7 +309,7 @@ class ArenaManager{
     public function refreshSigns(){
         foreach($this->signTiles as $signTile){
             if($signTile->level != null){
-                $signTile->setText(OneVsOne::SIGN_TITLE, "-Waiting " . $this->getNumberOfPlayersInQueue(), "-Arenas: " . $this->getNumberOfFreeArenas(), "-+===+-");
+                $signTile->setText(OneVsOne::getMessage("sign_title"), "-Waiting " . $this->getNumberOfPlayersInQueue(), "-Arenas: " . $this->getNumberOfFreeArenas(), "-+===+-");
             }
         }
     }
