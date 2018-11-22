@@ -50,11 +50,11 @@ class OneVsOne extends PluginBase{
 	 */
 	public function MessagesCheck(): void {
 		$messages = new Config($this->getDataFolder() . "messages.yml", Config::YAML);
-		if((!$messages->exists("messages-version")) || ($messages->get("message-version") !== self::MESSAGES_VER)){
+		if((!$messages->exists("messages-version")) || ($messages->get("messages-version") !== self::MESSAGES_VER)){
 			rename($this->getDataFolder() . "messages.yml", $this->getDataFolder() . "messages_old.yml");
 			$this->saveResource("messages.yml");
-			$this->getLogger()->critical("Your configuration file is outdated.");
-			$this->getLogger()->notice("Your old configuration has been saved as messages_old.yml and a new configuration file has been generated.");
+			$this->getLogger()->critical("Your messages file is outdated.");
+			$this->getLogger()->notice("Your old messages has been saved as messages_old.yml and a new configuration file has been generated.");
 			return;
 		}
 	}
