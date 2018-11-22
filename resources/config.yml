@@ -5,6 +5,8 @@
 ###############
 #1vs1 settings
 config-version: "1.0.0"
+## DO NOT TOUCH the config-version option, this is for internal use only, and editing it could result in you breaking the plugin.
+
 ###############
 # Time limit for each duel, in minutes:
 time-limit: 3
