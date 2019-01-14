@@ -201,10 +201,10 @@ class Arena{
         // Finish the duel and teleport the winner at spawn
         $loser == $this->players[0] ? $winner = $this->players[1] : $winner = $this->players[0];
 
-        $loser->sendMessage(str_replace("{winner}", $winner->getName(), OneVsOne::getMessage("duel_loser")));
+        $loser->sendMessage(str_replace(["{winner}"], [$winner->getName()], OneVsOne::getMessage("duel_loser")));
         $loser->removeAllEffects();
 
-        $winner->sendMessage(str_replace("{loser}", $loser->getName(), OneVsOne::getMessage("duel_winner")));
+        $winner->sendMessage(str_replace(["{loser}"], [$loser->getName()], OneVsOne::getMessage("duel_winner")));
         $winner->removeAllEffects();
 
         // Teleport the winner to spawn
@@ -214,7 +214,7 @@ class Arena{
         $winner->setHealth(20);
         $winner->getInventory()->clearAll();
         $winner->getArmorInventory()->clearAll();
-        $this->plugin->getServer()->broadcastMessage(str_replace("{winner}", "{loser}", $winner->getName(), $loser->getName(), OneVsOne::getMessage("duel_broadcast")));
+        $this->plugin->getServer()->broadcastMessage(str_replace(["{winner}", "{loser}"], [$winner->getName(), $loser->getName()], OneVsOne::getMessage("duel_broadcast")));
 
         // Reset arena
         $this->reset();
