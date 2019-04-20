@@ -4,6 +4,7 @@ namespace Minifixio\onevsone\Tasks;
 
 
 use Minifixio\onevsone\Arena;
+use Minifixion\onevsone\Tasks\OneVsOne;
 use pocketmine\Player;
 use pocketmine\scheduler\Task;
 use pocketmine\utils\TextFormat;
@@ -17,6 +18,7 @@ class GameTimeTask extends Task{
 	private $owner;
 	/** @var Arena  */
 	private $arena;
+	
 	
 	public function __construct(Plugin $owner, Arena $arena){
 		$this->owner = $owner;
